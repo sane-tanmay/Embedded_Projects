@@ -1,0 +1,5 @@
+"C:\Users\Admin\Desktop\CAN_API_Demo_RX63N_RDK\CAN_API_Demo_RX63N_RDK\r_bsp\board\rdkrx63n\lowlvl.src"
+-cpu=rx600
+-debug
+-output="C:\Users\Admin\Desktop\CAN_API_Demo_RX63N_RDK\CAN_API_Demo_RX63N_RDK\Debug\lowlvl.obj"
+-nologo

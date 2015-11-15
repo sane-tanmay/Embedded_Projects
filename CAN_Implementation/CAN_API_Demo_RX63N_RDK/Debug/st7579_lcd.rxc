@@ -1,0 +1,16 @@
+-cpu=rx600
+-lang=c99
+-include="C:\Users\Admin\Desktop\CAN_API_Demo_RX63N_RDK\CAN_API_Demo_RX63N_RDK\r_bsp"
+-include="C:\Users\Admin\Desktop\CAN_API_Demo_RX63N_RDK\CAN_API_Demo_RX63N_RDK\r_glyph"
+-include="C:\Users\Admin\Desktop\CAN_API_Demo_RX63N_RDK\CAN_API_Demo_RX63N_RDK\r_glyph\src"
+-include="C:\Users\Admin\Desktop\CAN_API_Demo_RX63N_RDK\CAN_API_Demo_RX63N_RDK\r_glyph\src\glyph"
+-include="C:\Users\Admin\Desktop\CAN_API_Demo_RX63N_RDK\CAN_API_Demo_RX63N_RDK\r_rspi_rx600"
+-include="C:\Users\Admin\Desktop\CAN_API_Demo_RX63N_RDK\CAN_API_Demo_RX63N_RDK\r_rspi_rx600\src"
+-include="C:\Users\Admin\Desktop\CAN_API_Demo_RX63N_RDK\CAN_API_Demo_RX63N_RDK\r_switches"
+-include="C:\Users\Admin\Desktop\CAN_API_Demo_RX63N_RDK\CAN_API_Demo_RX63N_RDK\r_switches\src"
+-include="C:\Users\Admin\Desktop\CAN_API_Demo_RX63N_RDK\CAN_API_Demo_RX63N_RDK\src"
+-output=obj="C:\Users\Admin\Desktop\CAN_API_Demo_RX63N_RDK\CAN_API_Demo_RX63N_RDK\Debug\st7579_lcd.obj"
+-debug
+-speed
+"C:\Users\Admin\Desktop\CAN_API_Demo_RX63N_RDK\CAN_API_Demo_RX63N_RDK\r_glyph\src\glyph\drivers\st7579_lcd.c"
+-nologo

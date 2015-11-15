@@ -1,0 +1,147 @@
+
+
+
+
+
+
+/*
+ * The tasks as defined at the top of this file.
+ */
+static void LED1s(void *pvParameters );
+static void LED10s(void *pvParameters );
+
+static void get_temp(void *pvParameters );
+static void write_temp(void *pvParameters );
+
+
+//Semaphore Declaration
+   vSemaphoreCreateBinary( semaphore_gaurd_tp);	
+
+//Task creation 
+
+
+
+//LED1s
+		xTaskCreate( LED1s, "LED1s_name",configMINIMAL_STACK_SIZE,NULL, tskIDLE_PRIORITY + 1,NULL);
+		//LED10s
+		xTaskCreate( LED10s, "LED10s_name",configMINIMAL_STACK_SIZE,NULL, tskIDLE_PRIORITY + 1,NULL);
+	    //Task get temp
+		xTaskCreate( get_temp, "read temp int",configMINIMAL_STACK_SIZE,NULL, tskIDLE_PRIORITY + 1,NULL);
+		//task write_temp to LCD
+		xTaskCreate( write_temp, "write temp int",configMINIMAL_STACK_SIZE,NULL, tskIDLE_PRIORITY + 1,NULL);
+
+//Task 1
+ static void LED1s( void *pvParameters )
+{
+		for( ;; )
+	{
+		vTaskDelay(delay_LED1s ); // Delay for toggling
+		LED4 = ~LED4;
+		LED6 = ~LED6;
+		LED8 = ~LED8;
+		LED10 = ~LED10;
+		LED12 = ~LED12;
+		LED14 = ~LED14;
+	}
+}
+
+//Task2
+static void LED10s( void *pvParameters )
+{
+	for( ;; )
+	{
+		vTaskDelay( delay_LED10s ); //Delay for toogling
+		LED5 = ~LED5;
+		LED7 = ~LED7;
+		LED9 = ~LED9;
+		LED11 = ~LED11;
+		LED13 = ~LED13;
+		LED15 = ~LED15;
+
+	}
+}
+
+
+//task3
+get_temp
+
+static void get_temp(void *pvParameters )
+{
+	int tan,may;
+	int temp_int = 0;
+	
+	double voltage_sense_int = 0;
+	TimerHandle_t xTimer;
+
+	#ifdef PLATFORM_BOARD_RDKRX63N
+	SYSTEM.PRCR.WORD = 0xA50B;
+	#endif
+
+	MSTP(S12AD) = 0;
+	MSTP(TEMPS) = 0;
+	
+#ifdef PLATFORM_BOARD_RDKRX63N
+	SYSTEM.PRCR.WORD = 0xA500;
+#endif
+
+	while(1){
+		
+	//ADC Initialization
+	
+	S12AD.ADEXICR.BIT.TSS = 1;  
+	S12AD.ADSSTR23.WORD = 0x1414 ; //Ad sampling state register
+	TEMPS.TSCR.BIT.TSEN = 1; // start temp sensor
+	for(may = 0; may<150; may++)   //Stabilization delay
+	{
+	}
+	TEMPS.TSCR.BIT.TSOE = 1;
+
+	S12AD.ADCSR.BIT.ADST = 1;  //start conversion
+	for( tan = 0; tan<150; tan++)
+	{
+	}
+	TEMPS.TSCR.BIT.TSEN = 0;
+	TEMPS.TSCR.BIT.TSOE = 0;
+	
+ 	temp_int = (int) S12AD.ADTSDR;
+	voltage_sense_int = (temp_int * 3.3) / 4096;
+
+	if(semaphore_gaurd_tp != NULL) //Semaphore Check
+	{
+		if(xSemaphoreTake(semaphore_gaurd_tp, 0) == pdPASS) 
+// Check Semaphore value
+		{  //Atomic Section
+		
+			Temp_value = ((voltage_sense_int - 1.26) / 0.0041) + 25;
+		
+		}
+		xSemaphoreGive(semaphore_gaurd_tp); //Release Semaphore
+	}
+
+	}
+}
+//task 4
+
+static void write_temp(void *pvParameters )
+{
+	float Temp_updated = 0;
+	
+	while(1){
+		vTaskDelay( delay_temperature );
+		if(semaphore_gaurd_tp != NULL)  
+		{
+		if(xSemaphoreTake(semaphore_gaurd_tp, 0) == pdPASS) 
+//Acquire Semaphore Access
+		{	//Atomic Section
+			Temp_updated = Temp_value;
+		
+		}
+		xSemaphoreGive(semaphore_gaurd_tp);
+
+		}
+	}
+}
+	
+
+
+

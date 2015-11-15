@@ -1,0 +1,22 @@
+[HIMDBVersion]
+2.0
+[DATABASE_VERSION]
+"1.2" 
+[CURRENT_PROJECT]
+"CAN_API_Demo_RX63N_RDK" 
+[GENERAL_DATA]
+"BuildMultipleSettings" "CAN_API_Demo_RX63N_RDK|Debug||" 
+[BREAKPOINTS]
+[OPEN_WORKSPACE_FILES]
+"C:\Users\Admin\Desktop\CAN_API_Demo_RX63N_RDK\CAN_API_Demo_RX63N_RDK\src\can_api_demo.c" 
+"C:\Users\Admin\Desktop\CAN_API_Demo_RX63N_RDK\CAN_API_Demo_RX63N_RDK\src\main.c" 
+"C:\Users\Admin\Desktop\CAN_API_Demo_RX63N_RDK\CAN_API_Demo_RX63N_RDK\src\r_can_api.c" 
+"C:\Users\Admin\Desktop\CAN_API_Demo_RX63N_RDK\CAN_API_Demo_RX63N_RDK\src\switches.c" 
+[WORKSPACE_FILE_STATES]
+"C:\Users\Admin\Desktop\CAN_API_Demo_RX63N_RDK\CAN_API_Demo_RX63N_RDK\src\can_api_demo.c" 0 0 1053 149 0 3 
+"C:\Users\Admin\Desktop\CAN_API_Demo_RX63N_RDK\CAN_API_Demo_RX63N_RDK\src\main.c" -8 -30 1053 452 1 1 
+"C:\Users\Admin\Desktop\CAN_API_Demo_RX63N_RDK\CAN_API_Demo_RX63N_RDK\src\r_can_api.c" 0 0 1053 452 0 0 
+"C:\Users\Admin\Desktop\CAN_API_Demo_RX63N_RDK\CAN_API_Demo_RX63N_RDK\src\switches.c" 0 0 1053 452 0 2 
+[LOADED_PROJECTS]
+"CAN_API_Demo_RX63N_RDK" 
+[END]

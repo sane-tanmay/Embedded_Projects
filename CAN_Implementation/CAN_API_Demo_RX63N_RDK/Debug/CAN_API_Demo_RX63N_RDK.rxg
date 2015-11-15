@@ -1,0 +1,4 @@
+-cpu=rx600
+-output="C:\Users\Admin\Desktop\CAN_API_Demo_RX63N_RDK\CAN_API_Demo_RX63N_RDK\Debug\CAN_API_Demo_RX63N_RDK.lib"
+-lang=c99
+-head=runtime,stdio,stdlib

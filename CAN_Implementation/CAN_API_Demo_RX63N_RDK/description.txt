@@ -1,0 +1,2 @@
+CAN_API_Demo
+This is a demonstration of the CAN peripheral and the CAN API. Basic CAN transmit and receive operations are exercised.
